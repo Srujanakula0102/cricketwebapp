@@ -1,0 +1,6 @@
+const API_BASE = import.meta.env.VITE_API_URL ?? 'https://localhost:44336'
+async function request(path, token, options = {}) { const response = await fetch(`${API_BASE}${path}`, { ...options, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` } }); if (!response.ok) { if (response.status === 401 || response.status === 403) throw new Error('Your admin session has expired. Please sign in again.'); throw new Error((await response.text()) || 'The venue could not be saved.') } return response.status === 204 ? null : response.json() }
+export async function getAdminVenues(search = '') { const query = new URLSearchParams({ page: '1', pageSize: '100' }); if (search) query.set('search', search); const response = await fetch(`${API_BASE}/api/venues?${query}`); if (!response.ok) throw new Error('Unable to load venues.'); return response.json() }
+export function createVenue(data, token) { return request('/api/venues', token, { method: 'POST', body: JSON.stringify(data) }) }
+export function updateVenue(id, data, token) { return request(`/api/venues/${id}`, token, { method: 'PUT', body: JSON.stringify(data) }) }
+export function deleteVenue(id, token) { return request(`/api/venues/${id}`, token, { method: 'DELETE' }) }
