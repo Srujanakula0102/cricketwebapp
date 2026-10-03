@@ -57,7 +57,7 @@ nav .active {
   position: relative;
   min-height: 470px;
   padding: 80px 6%;
-  background-image: linear-gradient(105deg, rgba(13, 43, 28, .94), rgba(13, 43, 28, .58)), url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg');
+  background-image: url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -78,6 +78,10 @@ nav .active {
   font-size: clamp(45px, 7vw, 78px);
   line-height: .9;
   margin: 15px 0;
+  color: #ff7b00;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-weight: 700;
 }
 
 .hero p,
@@ -90,7 +94,7 @@ section > p,
 }
 
 .hero > p {
-  color: #f3c667;
+  color:pink;
 }
 
 .hero span {
@@ -99,6 +103,7 @@ section > p,
   color: white;
   line-height: 1.6;
   margin-bottom: 25px;
+  font-weight: bolder;
 }
 
 .hero aside {
@@ -423,18 +428,66 @@ section h2 {
 }
 
 /* Sportsmania responsive public portal */
-:root { --ouce-green: #123b28; --ouce-gold: #f3c667; --surface: #f3f5f1; }
-body { line-height: 1.5; }
+:root { --ouce-green: #123b28; --ouce-deep: #0b291b; --ouce-gold: #f3c667; --surface: #f3f5f1; --card: #ffffff; --ink: #18251d; --muted: #607064; }
+body { line-height: 1.5; background: #f7f8f5; color: var(--ink); }
 button, input, select { -webkit-tap-highlight-color: transparent; }
 button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--ouce-gold); outline-offset: 2px; }
-header { position: sticky; top: 0; z-index: 12; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); }
-nav button { min-height: 42px; }
+header { position: sticky; top: 0; z-index: 12; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(18,59,40,.08); }
+nav button { min-height: 42px; color: #314438; font-weight: 700; }
+nav button:hover, nav .active { color: var(--ouce-green); }
+.login, .cta { background: var(--ouce-green); border-radius: 2px; font-weight: 800; box-shadow: 0 4px 10px rgba(18,59,40,.14); }
+.hero { background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg'); }
+.hero h1 { color: #fff; text-shadow: none; }
+.hero > p { color: var(--ouce-gold); }
 .listing, .sports-page { max-width: 1320px; margin: 0 auto; padding: clamp(32px, 6vw, 76px) 6%; }
 .listing h1, .sports-hero h1 { font-size: clamp(42px, 6vw, 78px); line-height: .96; letter-spacing: -.04em; }
 .catalogue-grid, .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 18px; }
-.catalogue-card, .news-card { min-height: 245px; transition: transform .18s ease, box-shadow .18s ease; }
+.catalogue-card, .news-card { min-height: 245px; padding: 22px; border: 1px solid #e0e6df; background: var(--card); border-radius: 4px; color: var(--ink); text-align: left; transition: transform .18s ease, box-shadow .18s ease; }
 .catalogue-card:hover, .news-card:hover, .match-card:hover, .sport-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(18,59,40,.12); }
-.profile, .profile-related, .scoring-board, .scoreboard { border-radius: 3px; }
+.catalogue-card small, .news-card small { color: #6c7c6e; font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.catalogue-card h2, .news-card h2 { font-size: 25px; line-height: 1.05; margin: 12px 0; }
+.catalogue-card p, .news-card p { color: var(--muted); }
+.catalogue-card b, .news-card b { color: var(--ouce-green); font-size: 13px; }
+.catalogue-search { width: min(100%, 460px); margin: 8px 0 30px; padding: 14px 16px; border: 1px solid #cfdacf; border-radius: 3px; background: #fff; font-size: 16px; }
+.state-card { margin: 20px 0; padding: 22px; border: 1px dashed #b7c7b8; border-radius: 4px; background: #fff; color: var(--muted); }
+.profile, .profile-related, .scoring-board, .scoreboard { max-width: 1200px; margin-left: auto; margin-right: auto; border-radius: 5px; }
+.profile { padding: clamp(26px, 4vw, 55px); background: linear-gradient(125deg, #103d29, #1f6c49); color: #fff; }
+.profile > p { color: var(--ouce-gold); }
+.profile-heading { display: flex; align-items: center; gap: 22px; }
+.profile-heading h1 { margin: 0; font-size: clamp(34px, 5vw, 62px); line-height: 1; }
+.profile-heading span { color: #dcebdc; }
+.profile-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px; margin-top: 34px; background: rgba(255,255,255,.15); }
+.profile-stats article { padding: 16px; background: rgba(5,36,22,.22); }
+.profile-stats small { display: block; margin-bottom: 5px; color: #d0e1d1; font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.profile-stats b { font-size: 15px; }
+.profile-related { margin-top: 20px; padding: clamp(24px, 4vw, 42px); background: #fff; border: 1px solid #e1e8e1; box-shadow: 0 8px 22px rgba(18,59,40,.06); }
+.profile-related > p { color: #64754d; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.profile-related h2 { font-size: clamp(25px, 3vw, 38px); }
+.profile-match-list, .squad-list > div { display: grid; gap: 10px; }
+.profile-match-list article, .squad-list article { display: flex; align-items: center; gap: 14px; padding: 14px; background: #f5f7f4; border-radius: 3px; }
+.profile-match-list article > b { min-width: 78px; color: var(--ouce-green); font-size: 11px; letter-spacing: .08em; }
+.profile-match-list span, .squad-list span { display: block; color: var(--muted); font-size: 13px; }
+.initials { display: grid; flex: 0 0 auto; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #dcebdc; color: var(--ouce-green); font-weight: 900; }
+.initials.large { width: 112px; height: 112px; background: #e5f1df; font-size: 28px; }
+.team-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.team-chips span { padding: 8px 11px; background: #eef4eb; color: var(--ouce-green); font-weight: 700; font-size: 13px; }
+.news-card-image { border-radius: 4px 4px 0 0; }
+.article-page { max-width: 920px; margin: 0 auto; padding: clamp(28px, 6vw, 72px) 6%; }
+.article { padding: clamp(24px, 5vw, 58px); background: #fff; border: 1px solid #e2e8e1; border-radius: 5px; }
+.article h1 { font-size: clamp(36px, 6vw, 67px); line-height: 1.02; letter-spacing: -.04em; }
+.article h2 { color: #516653; font-size: clamp(18px, 2.5vw, 24px); font-weight: 500; line-height: 1.45; }
+.article-content { max-width: 730px; color: #394a3d; font-size: 17px; line-height: 1.8; }
+.match-section { max-width: 1320px; margin: 0 auto; }
+.match-card { display: flex; min-height: 230px; flex-direction: column; border: 1px solid #e0e6df; border-radius: 4px; background: #fff; box-shadow: 0 5px 16px rgba(18,59,40,.05); }
+.match-card-main { flex: 1; padding: 22px; color: var(--ink); text-align: left; }
+.match-card-main h3 { margin: 12px 0; font-size: 23px; }
+.save-match { align-self: flex-start; margin: 0 22px 19px; color: var(--ouce-green); font-weight: 800; }
+.save-match.saved { color: #a46a00; }
+.scoreboard { margin-top: 20px; padding: clamp(24px, 5vw, 54px); background: linear-gradient(135deg, #0e3b27, #1f6b48); color: #fff; }
+.scoreboard h1 { font-size: clamp(30px, 5vw, 58px); }
+.tabs { display: flex; overflow-x: auto; gap: 8px; padding: 12px 5%; background: #fff; border-bottom: 1px solid #dfe7de; }
+.tabs button { flex: 0 0 auto; padding: 10px 14px; border-radius: 20px; color: #5d6e60; font-weight: 800; }
+.tabs .selected { background: var(--ouce-green); color: #fff; }
 .sports-hero { min-height: 355px; padding: clamp(45px, 8vw, 100px) 6%; color: #fff; background: linear-gradient(115deg, #0c3924, #1f6846); }
 .sports-hero p { color: var(--ouce-gold); font-size: 11px; font-weight: 800; letter-spacing: .14em; }
 .sports-hero h1 { margin: 13px 0 20px; }
@@ -463,13 +516,14 @@ nav button { min-height: 42px; }
 .site-footer a { display: inline-block; margin-top: 10px; color: var(--ouce-gold); font-size: 13px; font-weight: 700; }
 .news-image-preview { display: flex; align-items: center; gap: 12px; }
 .news-image-preview img { width: 96px; height: 64px; object-fit: cover; border: 1px solid #dce4d8; }
-.news-card-image { display: block; width: calc(100% + 44px); height: 160px; margin: -22px -22px 18px; object-fit: cover; }
+.news-card-image { display: block; width: calc(100% + 44px); height: auto; margin: -22px -22px 18px; object-fit: cover; }
 .article-image { display: block; width: 100%; max-height: 520px; margin: 24px 0; object-fit: cover; }
 
 @media (min-width: 701px) and (max-width: 1050px) {
   nav { gap: 10px; }
   nav button { font-size: 13px; }
   .cards { grid-template-columns: repeat(2, 1fr); }
+  .profile, .profile-related { margin-left: 4%; margin-right: 4%; }
 }
 
 @media (max-width: 700px) {
@@ -480,6 +534,7 @@ nav button { min-height: 42px; }
   .listing, .sports-page { padding-top: 32px; padding-bottom: 45px; }
   .catalogue-grid, .news-grid, .sports-grid { grid-template-columns: 1fr; }
   .catalogue-card, .news-card { min-height: 0; padding: 20px; }
+  .catalogue-card:hover, .news-card:hover, .match-card:hover, .sport-card:hover { transform: none; }
   .match-card b { font-size: 24px; }
   .sports-hero { min-height: 310px; padding: 54px 7%; }
   .sports-directory { padding: 38px 5%; }
@@ -489,4 +544,17 @@ nav button { min-height: 42px; }
   .site-footer { grid-template-columns: 1fr; gap: 22px; padding: 32px 5%; }
   .footer-links { grid-template-columns: repeat(3, 1fr); }
   .footer-author { text-align: left; }
+  .profile { padding: 26px 20px; }
+  .profile-heading h1 { font-size: 34px; }
+  .profile-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 24px; }
+  .profile-stats article { padding: 13px; }
+  .profile-related { margin-top: 14px; padding: 24px 18px; }
+  .profile-match-list article { align-items: flex-start; }
+  .profile-match-list article > b { min-width: 60px; }
+  .article { padding: 25px 19px; }
+  .article-content { font-size: 16px; line-height: 1.7; }
+  .news-card-image { width: calc(100% + 40px); margin: -20px -20px 18px; }
+  .tabs { padding-left: 5%; padding-right: 5%; }
+  .scoreboard { margin-top: 12px; padding: 27px 20px; }
+  .event-menu-grid, .option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

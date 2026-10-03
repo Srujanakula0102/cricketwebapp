@@ -100,6 +100,7 @@ export default function App() {
     setCatalogueItem(null);
     setNewsSlug(null);
     setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     window.history.replaceState({}, "", window.location.pathname);
   };
   const openMatch = (match) => {
@@ -175,11 +176,12 @@ export default function App() {
         <Centre match={selected} back={closeMatch} />
       ) : catalogueItem ? (
         <CatalogueDetail
+          key={`${catalogueItem.kind}-${catalogueItem.id}`}
           selection={catalogueItem}
           back={() => setCatalogueItem(null)}
         />
       ) : newsSlug ? (
-        <NewsArticle slug={newsSlug} back={() => setNewsSlug(null)} />
+        <NewsArticle key={newsSlug} slug={newsSlug} back={() => setNewsSlug(null)} />
       ) : page === "Home" ? (
         <Home
           go={go}
@@ -194,11 +196,11 @@ export default function App() {
           toggleSavedMatch={toggleSavedMatch}
         />
       ) : page === "News" ? (
-        <News select={setNewsSlug} />
+        <News key="news" select={setNewsSlug} />
       ) : page === "Sports" ? (
-        <Sports go={go} />
+        <Sports key="sports" go={go} />
       ) : ["Teams", "Players", "Tournaments", "Venues"].includes(page) ? (
-        <CataloguePage kind={page} select={openCatalogue} />
+        <CataloguePage key={page} kind={page} select={openCatalogue} />
       ) : (
         <Listing title={page} />
       )}
@@ -207,7 +209,7 @@ export default function App() {
   );
 }
 function PublicFooter({ go }) {
-  return <footer className="site-footer"><div><button className="footer-brand" onClick={() => go("Home")}>SPORTSMANIA <small>· OUCE SPORTS PORTAL</small></button><p>The public sports platform for Osmania University College of Engineering.</p></div><div className="footer-links"><button onClick={() => go("Sports")}>Sports</button><button onClick={() => go("Matches")}>Matches</button><button onClick={() => go("News")}>News</button></div><div className="footer-author"><p>Website architecture and development by <strong>Srujan Akula</strong>, Mining Engineering (2023–2027).</p><a href="https://in.linkedin.com/in/srujan-akula-40aa8927a" target="_blank" rel="noreferrer">For queries or technical support, contact Srujan on LinkedIn ↗</a></div></footer>;
+  return <footer className="site-footer"><div><button className="footer-brand" onClick={() => go("Home")}>SPORTSMANIA <small>· OUCE SPORTS PORTAL</small></button><p>The public sports platform for Osmania University College of Engineering.</p></div><div className="footer-links"><button onClick={() => go("Sports")}>Sports</button><button onClick={() => go("Matches")}>Matches</button><button onClick={() => go("News")}>News</button></div><div className="footer-author"><p>Website designed and developed by <strong>Srujan Akula</strong>, Mining Engineering (2023–2027).</p><a href="https://in.linkedin.com/in/srujan-akula-40aa8927a" target="_blank" rel="noreferrer">For queries or technical support, contact Srujan on LinkedIn ↗</a></div></footer>;
 }
 function Sports({ go }) {
   const sports = [
@@ -496,7 +498,7 @@ function Home({ go, select, savedMatchIds, toggleSavedMatch }) {
     <main>
       <section className="hero">
         <p>OSMANIA UNIVERSITY COLLEGE OF ENGINEERING</p>
-        <h1 style={{ color: 'white' }}>
+        <h1>
           College sport,
           <br />
           <i>live and loud.</i>
@@ -971,9 +973,6 @@ function Centre({ match, back }) {
           {state && ` · event #${state.eventSequence}`}
         </small>
         <div className="match-tools no-print">
-          <button className="print-scorecard" onClick={() => window.print()}>
-            Print scorecard
-          </button>
           <button className="share-match" onClick={copyLink}>
             Copy match link
           </button>
