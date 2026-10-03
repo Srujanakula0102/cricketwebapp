@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL ?? 'https://localhost:44336'
+const API_BASE = import.meta.env.VITE_API_URL ?? ''
 
 export async function uploadImage(file, token) {
   const body = new FormData()

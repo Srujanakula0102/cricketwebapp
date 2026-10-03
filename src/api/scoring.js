@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL ?? 'https://localhost:44336'
+const API_BASE = import.meta.env.VITE_API_URL ?? ''
 
 export async function getCurrentInnings(matchId) {
   const response = await fetch(`${API_BASE}/api/scoring/matches/${matchId}/current`)
