@@ -58,7 +58,7 @@ export default function AdminTeams({ session }) {
     if (!file) return;
     try {
       setMessage("Uploading image…");
-      const logoUrl = await uploadImage(file, session.accessToken);
+      const logoUrl = await uploadImage(file, session.accessToken, "teams");
       setForm((current) => ({ ...current, logoUrl }));
       setMessage("Image uploaded. Save the team to keep it.");
     } catch (error) {

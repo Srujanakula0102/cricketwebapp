@@ -6,6 +6,7 @@ import {
   getAdminTournaments,
   updateTournament,
 } from "../api/adminTournaments";
+import { uploadImage } from "../api/uploads";
 
 const formats = ["Test", "ODI", "T20", "T10"];
 const emptyTournament = {
@@ -39,6 +40,15 @@ export default function AdminTournaments({ session }) {
   useEffect(() => {
     load();
   }, []);
+  const upload = async (file) => {
+    if (!file) return;
+    try {
+      setMessage("Uploading logo to Cloudinary…");
+      const logoUrl = await uploadImage(file, session.accessToken, "tournaments");
+      setForm((current) => ({ ...current, logoUrl }));
+      setMessage("Logo uploaded. Save the tournament to keep it.");
+    } catch (error) { setMessage(error.message || "Logo upload failed."); }
+  };
   const toggleTeam = (id) =>
     setForm((current) => ({
       ...current,
@@ -137,7 +147,11 @@ export default function AdminTournaments({ session }) {
             </select>
           </label>
           <label>
-            Logo image address
+            Upload tournament logo
+            <input type="file" accept="image/png,image/jpeg,image/webp" onChange={(event) => upload(event.target.files?.[0])} />
+          </label>
+          <label>
+            Logo image address (optional)
             <input
               type="url"
               value={form.logoUrl || ""}
@@ -146,6 +160,7 @@ export default function AdminTournaments({ session }) {
               }
             />
           </label>
+          {form.logoUrl && <div className="news-image-preview"><img src={form.logoUrl} alt="Tournament logo preview" /><button type="button" onClick={() => setForm({ ...form, logoUrl: "" })}>Remove logo</button></div>}
           <label>
             Start date
             <input

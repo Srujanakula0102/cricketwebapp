@@ -74,7 +74,7 @@ export default function AdminPlayers({ session }) {
     if (!file) return;
     try {
       setMessage("Uploading image…");
-      const profileImageUrl = await uploadImage(file, session.accessToken);
+      const profileImageUrl = await uploadImage(file, session.accessToken, "players");
       setForm((current) => ({ ...current, profileImageUrl }));
       setMessage("Image uploaded. Save the player to keep it.");
     } catch (error) {
