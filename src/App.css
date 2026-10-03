@@ -57,7 +57,7 @@ nav .active {
   position: relative;
   min-height: 470px;
   padding: 80px 6%;
-  background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
+background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg'); 
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -494,7 +494,7 @@ nav button:hover, nav .active { color: var(--ouce-green); }
 .sports-hero,
 .profile,
 .scoreboard {
-  background-image: linear-gradient(115deg, rgba(7, 39, 23, .92), rgba(11, 80, 46, .66)), url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
+  background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
   background-position: center;
   background-size: cover;
 }
