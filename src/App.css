@@ -57,7 +57,7 @@ nav .active {
   position: relative;
   min-height: 470px;
   padding: 80px 6%;
-  background-image: url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg');
+  background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -436,7 +436,7 @@ header { position: sticky; top: 0; z-index: 12; background: rgba(255,255,255,.96
 nav button { min-height: 42px; color: #314438; font-weight: 700; }
 nav button:hover, nav .active { color: var(--ouce-green); }
 .login, .cta { background: var(--ouce-green); border-radius: 2px; font-weight: 800; box-shadow: 0 4px 10px rgba(18,59,40,.14); }
-.hero { background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg'); }
+.hero { background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg'); }
 .hero h1 { color: #fff; text-shadow: none; }
 .hero > p { color: var(--ouce-gold); }
 .listing, .sports-page { max-width: 1320px; margin: 0 auto; padding: clamp(32px, 6vw, 76px) 6%; }
@@ -488,6 +488,113 @@ nav button:hover, nav .active { color: var(--ouce-green); }
 .tabs { display: flex; overflow-x: auto; gap: 8px; padding: 12px 5%; background: #fff; border-bottom: 1px solid #dfe7de; }
 .tabs button { flex: 0 0 auto; padding: 10px 14px; border-radius: 20px; color: #5d6e60; font-weight: 800; }
 .tabs .selected { background: var(--ouce-green); color: #fff; }
+
+/* Campus image treatment for public feature panels */
+.hero,
+.sports-hero,
+.profile,
+.scoreboard {
+  background-image: linear-gradient(115deg, rgba(7, 39, 23, .92), rgba(11, 80, 46, .66)), url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+/* Admin dashboard: separate layout from public-site styles */
+.admin {
+  display: grid;
+  grid-template-columns: 244px minmax(0, 1fr);
+  min-height: calc(100vh - 76px);
+  background: #eef3ee;
+}
+
+.admin > aside {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 26px 14px;
+  background: #102b1d;
+  color: #fff;
+}
+
+.admin > aside > b {
+  display: block;
+  margin: 0 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: .08em;
+}
+
+.admin > aside > button {
+  padding: 12px 12px;
+  border-radius: 3px;
+  color: #dbe8db;
+  text-align: left;
+  font-weight: 700;
+}
+
+.admin > aside > button:hover,
+.admin > aside > button.active { background: #2a6243; color: #fff; }
+.admin > aside > button:last-child { margin-top: auto; color: #f5d389; }
+
+.admin > section {
+  min-width: 0;
+  padding: 0;
+  background: #f7f9f6;
+}
+
+.admin > section > header {
+  position: static;
+  height: auto;
+  padding: 28px clamp(22px, 4vw, 56px);
+  background: #fff;
+  box-shadow: 0 1px 0 #dce5dc;
+}
+
+.admin > section > header p { margin: 0 0 5px; color: #718072; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.admin > section > header h1 { margin: 0; color: #173923; font-size: clamp(32px, 4vw, 49px); }
+.admin > section > header .login { background: #153f29; }
+
+.admin-block,
+.admin-cards {
+  margin: 26px clamp(22px, 4vw, 56px);
+}
+
+.admin-block { padding: clamp(20px, 3vw, 34px); border: 1px solid #dfe8df; border-radius: 5px; background: #fff; box-shadow: 0 7px 20px rgba(18,59,40,.06); }
+.admin-block h2 { margin-top: 0; color: #173923; }
+.admin-block input:not([type='checkbox']):not([type='file']), .admin-block select, .admin-block textarea { width: 100%; padding: 11px 12px; border: 1px solid #cdd9cd; border-radius: 3px; background: #fff; color: #203b29; font: inherit; }
+.manage-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.manage-head h2 { margin: 0; }
+.admin-message { padding: 12px 14px; border-left: 4px solid #e8b54b; background: #fff8e7; color: #664b0d; }
+.admin-help { max-width: 800px; color: #637066; }
+.admin-empty { padding: 28px; border: 1px dashed #b7c8b8; background: #f8fbf8; color: #637066; text-align: center; }
+
+.admin-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 14px; }
+.admin-cards article { min-height: 136px; padding: 19px; border: 1px solid #dce8dd; border-radius: 5px; background: #fff; box-shadow: 0 6px 15px rgba(18,59,40,.05); }
+.admin-cards small, .admin-cards span { display: block; color: #718072; font-size: 11px; font-weight: 700; }
+.admin-cards b { display: block; margin: 8px 0; color: #123b28; font-size: 38px; line-height: 1; }
+
+.admin-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 22px 0; padding: 22px; border: 1px solid #dce8dd; background: #f6f9f6; }
+.admin-form h3, .admin-form .wide-field, .admin-form fieldset, .admin-form > div { grid-column: 1 / -1; }
+.admin-form h3 { margin: 0; color: #173923; }
+.admin-form label { display: grid; gap: 7px; color: #3c5040; font-size: 13px; font-weight: 800; }
+.admin-form button + button, .admin-list button + button { margin-left: 8px; }
+.admin-form .check-label { display: flex; align-items: center; gap: 8px; }
+.team-selector { border: 1px solid #cad8cb; }
+.team-selector label { display: inline-flex; margin: 7px 14px 7px 0; }
+.image-preview { display: block; max-width: 180px; max-height: 120px; object-fit: cover; border: 1px solid #d7e2d7; }
+
+.admin-list { display: grid; gap: 10px; margin-top: 20px; }
+.admin-list article { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 15px; border: 1px solid #e0e8e0; background: #fff; }
+.admin-list article b, .admin-list article span { display: block; }
+.admin-list article span, .admin-list time { margin-top: 4px; color: #6a786c; font-size: 13px; }
+.admin-list button { padding: 8px 10px; border: 1px solid #c9d7ca; border-radius: 3px; color: #1b4d30; font-weight: 700; }
+.admin-list .delete-button { border-color: #e5bbb3; color: #9a3325; }
+.role-pills { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+.role-pills label { padding: 5px 8px; background: #edf4ed; color: #245038; font-size: 12px; font-weight: 700; }
+.report-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.report-grid button { padding: 18px; border: 1px solid #dce8dd; background: #f5f9f5; color: #143e28; text-align: left; }
+.report-grid button b, .report-grid button span { display: block; }
+.report-grid button span { margin-top: 10px; color: #607062; font-size: 13px; }
 .sports-hero { min-height: 355px; padding: clamp(45px, 8vw, 100px) 6%; color: #fff; background: linear-gradient(115deg, #0c3924, #1f6846); }
 .sports-hero p { color: var(--ouce-gold); font-size: 11px; font-weight: 800; letter-spacing: .14em; }
 .sports-hero h1 { margin: 13px 0 20px; }
@@ -557,4 +664,25 @@ nav button:hover, nav .active { color: var(--ouce-green); }
   .tabs { padding-left: 5%; padding-right: 5%; }
   .scoreboard { margin-top: 12px; padding: 27px 20px; }
   .event-menu-grid, .option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .admin { display: block; min-height: 100vh; }
+  .admin > aside { position: sticky; top: 68px; z-index: 11; display: flex; flex-direction: row; align-items: center; overflow-x: auto; gap: 6px; padding: 10px 5%; white-space: nowrap; }
+  .admin > aside > b { flex: 0 0 auto; margin: 0 8px 0 0; font-size: 11px; }
+  .admin > aside > button { flex: 0 0 auto; padding: 8px 10px; font-size: 13px; }
+  .admin > aside > button:last-child { margin: 0 0 0 4px; }
+  .admin > section > header { padding: 22px 5%; }
+  .admin > section > header h1 { font-size: 32px; }
+  .admin > section > header .login { padding: 10px 12px; }
+  .admin-block, .admin-cards { margin: 16px 5%; }
+  .admin-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .admin-cards article { min-height: 118px; padding: 14px; }
+  .admin-cards b { font-size: 31px; }
+  .manage-head { align-items: flex-start; flex-direction: column; }
+  .manage-head .cta { width: 100%; }
+  .admin-form { grid-template-columns: 1fr; padding: 16px; gap: 13px; }
+  .admin-form h3, .admin-form .wide-field, .admin-form fieldset, .admin-form > div { grid-column: auto; }
+  .admin-list article { align-items: flex-start; flex-direction: column; gap: 11px; }
+  .admin-list article > div:last-child { display: flex; flex-wrap: wrap; gap: 7px; }
+  .admin-list button + button { margin-left: 0; }
+  .role-pills { justify-content: flex-start; }
 }
