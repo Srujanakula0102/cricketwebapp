@@ -110,12 +110,38 @@ export default function ScorerDashboard({ close }) {
       }),
     );
   };
+  const playerName = (id, fallback) => players.find((player) => player.id === id)?.fullName || fallback;
+  const automaticCommentary = (payload, detail) => {
+    const strikerName = playerName(state?.strikerId, "The batter");
+    const bowlerName = playerName(state?.bowlerId, "The bowler");
+    const dismissedName = playerName(payload.dismissedPlayerId, strikerName);
+    let actionText;
+    if (payload.isWicket) {
+      actionText = `${dismissedName} is out${detail ? ` — ${detail.replace("WICKET · ", "")}` : ""}`;
+    } else if (detail.startsWith("FOUR · ")) {
+      actionText = `${strikerName} hits a FOUR with a ${detail.replace("FOUR · ", "")}`;
+    } else if (detail.startsWith("SIX · ")) {
+      actionText = `${strikerName} launches a SIX — ${detail.replace("SIX · ", "")}`;
+    } else if (detail) {
+      actionText = detail.replace(/^EXTRA · /, "Extra — ").replace(/^SPECIAL · /, "Special event — ");
+    } else if (payload.extraType === 1) {
+      actionText = `wide ball, ${payload.extraRuns} extra run${payload.extraRuns === 1 ? "" : "s"}`;
+    } else if (payload.extraType === 2) {
+      actionText = `no ball, ${payload.extraRuns} extra run${payload.extraRuns === 1 ? "" : "s"}`;
+    } else if (payload.runsOffBat === 0) {
+      actionText = "no run";
+    } else {
+      actionText = `${strikerName} takes ${payload.runsOffBat} run${payload.runsOffBat === 1 ? "" : "s"}`;
+    }
+    const prefix = actionText.startsWith(strikerName) ? `${bowlerName} to ` : `${bowlerName} to ${strikerName}, `;
+    return `${prefix}${actionText}.${commentary.trim() ? ` ${commentary.trim()}` : ""}`;
+  };
   const delivery = (payload, guidedCommentary = "") =>
     action(async () => {
       const result = await recordDelivery(matchId, session.accessToken, {
         ...emptyDelivery,
         ...payload,
-        commentary: [guidedCommentary, commentary.trim()].filter(Boolean).join(" · ") || null,
+        commentary: automaticCommentary(payload, guidedCommentary),
       });
       setCommentary("");
       return result;
@@ -231,6 +257,9 @@ export default function ScorerDashboard({ close }) {
   const finalWicket = state?.wickets >= 9;
   const dismissed = new Set(state?.dismissedPlayerIds || []);
   const fielders = bowlers;
+  const strikerName = playerName(state?.strikerId, "—");
+  const nonStrikerName = playerName(state?.nonStrikerId, "—");
+  const bowlerName = playerName(state?.bowlerId, "—");
   const selectWicket = (label, wicketType) => {
     if (label === "Caught") {
       setFlow("caughtType");
@@ -329,6 +358,11 @@ export default function ScorerDashboard({ close }) {
       )}
       {state && !state.isComplete && (
         <section className="scoring-board">
+          <div className="crease-panel" aria-label="Players currently involved in this delivery">
+            <article className="on-strike"><small>ON STRIKE</small><strong>{strikerName}</strong><span>Faces the next ball</span></article>
+            <article><small>NON-STRIKER</small><strong>{nonStrikerName}</strong><span>At the other end</span></article>
+            <article><small>CURRENT BOWLER</small><strong>{bowlerName}</strong><span>Bowling this over</span></article>
+          </div>
           <div className="scoring-score">
             <small>CURRENT SCORE</small>
             <b>

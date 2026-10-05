@@ -649,6 +649,12 @@ table tbody tr:hover { background: #edf6ed; }
 .scorer-header-actions > button:first-child { padding: 10px 13px; border: 1px solid #c8d8c9; border-radius: 3px; color: #174b30; font-weight: 800; }
 .scorer-news { max-width: 1100px; margin: 22px auto; padding: clamp(20px, 4vw, 34px); border: 1px solid #dce8dd; background: #fff; box-shadow: 0 7px 20px rgba(18,59,40,.06); }
 .scorer-news > p { color: #607064; }
+.crease-panel { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-bottom: 22px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.18); }
+.crease-panel article { min-width: 0; padding: 14px; background: rgba(4,35,20,.42); }
+.crease-panel .on-strike { background: rgba(243,198,103,.94); color: #1a3827; }
+.crease-panel small, .crease-panel span { display: block; font-size: 10px; font-weight: 800; letter-spacing: .09em; }
+.crease-panel strong { display: block; overflow: hidden; margin: 5px 0; font-size: clamp(15px, 2vw, 19px); text-overflow: ellipsis; white-space: nowrap; }
+.crease-panel span { color: inherit; opacity: .8; font-size: 10px; font-weight: 600; letter-spacing: 0; }
 
 @media (min-width: 701px) and (max-width: 1050px) {
   nav { gap: 10px; }
@@ -695,6 +701,7 @@ table tbody tr:hover { background: #edf6ed; }
   .scorer-header-actions { gap: 6px; }
   .scorer-header-actions > button { padding: 9px 10px; font-size: 12px; }
   .scorer-news { margin: 14px 5%; }
+  .crease-panel { grid-template-columns: 1fr; gap: 1px; }
   .event-menu-grid, .option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .admin { display: block; min-height: 100vh; }
