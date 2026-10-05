@@ -57,7 +57,7 @@ nav .active {
   position: relative;
   min-height: 470px;
   padding: 80px 6%;
-background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View.jpg'); 
+  background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -435,13 +435,19 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 header { position: sticky; top: 0; z-index: 12; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(18,59,40,.08); }
 nav button { min-height: 42px; color: #314438; font-weight: 700; }
 nav button:hover, nav .active { color: var(--ouce-green); }
-.login, .cta { background: var(--ouce-green); border-radius: 2px; font-weight: 800; box-shadow: 0 4px 10px rgba(18,59,40,.14); }
-.hero { background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg'); }
+.login, .cta { background: pink; border-radius: 2px; font-weight: 800; box-shadow: 0 4px 10px rgba(18,59,40,.14); }
+.hero { background-image: linear-gradient(105deg, rgba(8, 40, 24, .95), rgba(8, 40, 24, .57)), url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg'); }
 .hero h1 { color: #fff; text-shadow: none; }
 .hero > p { color: var(--ouce-gold); }
 .listing, .sports-page { max-width: 1320px; margin: 0 auto; padding: clamp(32px, 6vw, 76px) 6%; }
 .listing h1, .sports-hero h1 { font-size: clamp(42px, 6vw, 78px); line-height: .96; letter-spacing: -.04em; }
 .catalogue-grid, .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 18px; }
+.home-news { max-width: 1320px; margin: 0 auto; padding: clamp(38px, 6vw, 76px) 6%; }
+.home-news-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 22px; }
+.home-news-heading p { margin: 0; color: #64754d; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.home-news-heading h2 { margin: 7px 0 0; color: #173923; font-size: clamp(31px, 4vw, 48px); line-height: 1; }
+.home-news-heading button { color: var(--ouce-green); font-weight: 800; }
+.news-button { cursor: pointer; text-align: left; }
 .catalogue-card, .news-card { min-height: 245px; padding: 22px; border: 1px solid #e0e6df; background: var(--card); border-radius: 4px; color: var(--ink); text-align: left; transition: transform .18s ease, box-shadow .18s ease; }
 .catalogue-card:hover, .news-card:hover, .match-card:hover, .sport-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(18,59,40,.12); }
 .catalogue-card small, .news-card small { color: #6c7c6e; font-size: 11px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
@@ -469,6 +475,8 @@ nav button:hover, nav .active { color: var(--ouce-green); }
 .profile-match-list span, .squad-list span { display: block; color: var(--muted); font-size: 13px; }
 .initials { display: grid; flex: 0 0 auto; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #dcebdc; color: var(--ouce-green); font-weight: 900; }
 .initials.large { width: 112px; height: 112px; background: #e5f1df; font-size: 28px; }
+.catalogue-entity-image, .player-card-photo { width: 72px; height: 72px; margin-bottom: 16px; border: 2px solid #d6e4d5; border-radius: 50%; object-fit: cover; background: #fff; }
+.team-profile-photo { width: 112px; height: 112px; border: 3px solid rgba(255,255,255,.72); border-radius: 50%; object-fit: cover; background: #fff; }
 .team-chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .team-chips span { padding: 8px 11px; background: #eef4eb; color: var(--ouce-green); font-weight: 700; font-size: 13px; }
 .news-card-image { border-radius: 4px 4px 0 0; }
@@ -494,7 +502,7 @@ nav button:hover, nav .active { color: var(--ouce-green); }
 .sports-hero,
 .profile,
 .scoreboard {
-  background-image: url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
+  background-image: linear-gradient(115deg, rgba(7,39,23,.92), rgba(11,80,46,.66)), url('https://res.cloudinary.com/dzbvkislm/image/upload/v1791035891/University-College-of-Engineering-Osmania-University-UCEOU-Hyderabad-Campus-View_p9bnop.jpg');
   background-position: center;
   background-size: cover;
 }
@@ -626,6 +634,22 @@ nav button:hover, nav .active { color: var(--ouce-green); }
 .news-card-image { display: block; width: calc(100% + 44px); height: auto; margin: -22px -22px 18px; object-fit: cover; }
 .article-image { display: block; width: 100%; max-height: 520px; margin: 24px 0; object-fit: cover; }
 
+/* Data tables: strong outside frame, lighter cell dividers */
+table { width: 100%; border: 2px solid #174b30; border-collapse: separate; border-spacing: 0; background: #fff; }
+table th, table td { padding: 11px 13px; border-right: 1px solid #bfd0c0; border-bottom: 1px solid #bfd0c0; text-align: left; }
+table th { background: #e8f0e8; color: #173923; font-size: 12px; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
+table tr:last-child td { border-bottom: 0; }
+table th:last-child, table td:last-child { border-right: 0; }
+table tbody tr:nth-child(even) { background: #f7faf7; }
+table tbody tr:hover { background: #edf6ed; }
+.stats-table-wrap, .table { max-width: 100%; overflow-x: auto; }
+.profile-standings { margin-top: 15px; }
+
+.scorer-header-actions { display: flex; align-items: center; gap: 10px; }
+.scorer-header-actions > button:first-child { padding: 10px 13px; border: 1px solid #c8d8c9; border-radius: 3px; color: #174b30; font-weight: 800; }
+.scorer-news { max-width: 1100px; margin: 22px auto; padding: clamp(20px, 4vw, 34px); border: 1px solid #dce8dd; background: #fff; box-shadow: 0 7px 20px rgba(18,59,40,.06); }
+.scorer-news > p { color: #607064; }
+
 @media (min-width: 701px) and (max-width: 1050px) {
   nav { gap: 10px; }
   nav button { font-size: 13px; }
@@ -640,6 +664,8 @@ nav button:hover, nav .active { color: var(--ouce-green); }
   section, .listing, .sports-page { padding-left: 5%; padding-right: 5%; }
   .listing, .sports-page { padding-top: 32px; padding-bottom: 45px; }
   .catalogue-grid, .news-grid, .sports-grid { grid-template-columns: 1fr; }
+  .home-news { padding: 38px 5%; }
+  .home-news-heading { align-items: flex-start; flex-direction: column; gap: 13px; }
   .catalogue-card, .news-card { min-height: 0; padding: 20px; }
   .catalogue-card:hover, .news-card:hover, .match-card:hover, .sport-card:hover { transform: none; }
   .match-card b { font-size: 24px; }
@@ -648,6 +674,8 @@ nav button:hover, nav .active { color: var(--ouce-green); }
   .sport-card { min-height: 215px; }
   .profile-stats { grid-template-columns: repeat(2, 1fr); }
   .profile-heading { gap: 14px; }
+  .catalogue-entity-image, .player-card-photo { width: 64px; height: 64px; }
+  .team-profile-photo { width: 78px; height: 78px; }
   .site-footer { grid-template-columns: 1fr; gap: 22px; padding: 32px 5%; }
   .footer-links { grid-template-columns: repeat(3, 1fr); }
   .footer-author { text-align: left; }
@@ -663,6 +691,10 @@ nav button:hover, nav .active { color: var(--ouce-green); }
   .news-card-image { width: calc(100% + 40px); margin: -20px -20px 18px; }
   .tabs { padding-left: 5%; padding-right: 5%; }
   .scoreboard { margin-top: 12px; padding: 27px 20px; }
+  table th, table td { padding: 10px; font-size: 13px; white-space: nowrap; }
+  .scorer-header-actions { gap: 6px; }
+  .scorer-header-actions > button { padding: 9px 10px; font-size: 12px; }
+  .scorer-news { margin: 14px 5%; }
   .event-menu-grid, .option-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .admin { display: block; min-height: 100vh; }

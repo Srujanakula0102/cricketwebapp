@@ -11,6 +11,7 @@ import {
 } from "../api/scoring";
 import { login } from "../api/auth";
 import { clearSession, getValidSession, saveSession } from "../api/session";
+import ScorerNews from "./ScorerNews";
 
 const API_BASE = import.meta.env.VITE_API_URL ?? "";
 const emptyDelivery = {
@@ -48,7 +49,8 @@ export default function ScorerDashboard({ close }) {
     [message, setMessage] = useState("Loading available matches…"),
     [commentary, setCommentary] = useState(""),
     [flow, setFlow] = useState(null),
-    [wicketDetail, setWicketDetail] = useState(null);
+    [wicketDetail, setWicketDetail] = useState(null),
+    [newsOpen, setNewsOpen] = useState(false);
   useEffect(() => {
     Promise.all([
       getMatches(),
@@ -252,10 +254,9 @@ export default function ScorerDashboard({ close }) {
           <p>LIVE SCORING</p>
           <h1>Scorer console</h1>
         </div>
-        <button className="login" onClick={close}>
-          View site
-        </button>
+        <div className="scorer-header-actions"><button type="button" onClick={() => setNewsOpen(open => !open)}>{newsOpen ? "Close news desk" : "Publish news"}</button><button className="login" onClick={close}>View site</button></div>
       </header>
+      {newsOpen && <ScorerNews session={session} close={() => setNewsOpen(false)} />}
       {message && <div className="state-card">{message}</div>}
       <section className="scoring-select">
         <label>

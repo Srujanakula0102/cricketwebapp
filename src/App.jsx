@@ -186,6 +186,7 @@ export default function App() {
         <Home
           go={go}
           select={openMatch}
+          openNews={setNewsSlug}
           savedMatchIds={savedMatchIds}
           toggleSavedMatch={toggleSavedMatch}
         />
@@ -451,7 +452,7 @@ function GlobalSearch({ close, openMatch, openCatalogue }) {
     </main>
   );
 }
-function Home({ go, select, savedMatchIds, toggleSavedMatch }) {
+function Home({ go, select, openNews, savedMatchIds, toggleSavedMatch }) {
   const [matches, setMatches] = useState(preview);
   useEffect(() => {
     getMatches()
@@ -530,9 +531,24 @@ function Home({ go, select, savedMatchIds, toggleSavedMatch }) {
         savedMatchIds={savedMatchIds}
         toggleSavedMatch={toggleSavedMatch}
       />
+      <HomeNews go={go} openNews={openNews} />
       <TournamentSpotlight go={go} />
     </main>
   );
+}
+function HomeNews({ go, openNews }) {
+  const [articles, setArticles] = useState(null);
+  useEffect(() => {
+    let active = true;
+    getNews().then((items) => { if (active) setArticles((items || []).slice(0, 3)); }).catch(() => { if (active) setArticles([]); });
+    return () => { active = false; };
+  }, []);
+  return <section className="home-news">
+    <div className="home-news-heading"><div><p>FROM SPORTSMANIA</p><h2>Latest news</h2></div><button onClick={() => go("News")}>All news →</button></div>
+    {articles === null && <div className="state-card">Loading latest stories…</div>}
+    {articles?.length === 0 && <div className="state-card">No stories have been published yet. Published updates will appear here.</div>}
+    {articles?.length > 0 && <div className="news-grid home-news-grid">{articles.map(article => <button className="news-card news-button" onClick={() => openNews(article.slug)} key={article.id}>{article.imageUrl && <img className="news-card-image" src={article.imageUrl} alt="" loading="lazy" />}<small>{article.isFeatured ? "FEATURED · " : ""}{new Date(article.publishedAt).toLocaleDateString()}</small><h2>{article.title}</h2><p>{article.summary}</p><b>Read story →</b></button>)}</div>}
+  </section>;
 }
 function TournamentSpotlight({ go }) {
   const [tournament, setTournament] = useState(undefined);
